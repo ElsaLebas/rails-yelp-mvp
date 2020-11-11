@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+# Seed Restaurant DB with 10 valid restaurant records
+# Run rails db:seed to launch the seeding script.
+
+puts 'Creating 10 fake restaurants...'
+10.times do
+  restaurant = Restaurant.new(
+    name: Faker::Restaurant.name,
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}",
+    category: ["chinese", "italian", "japanese", "french", "belgian"].sample
+    )
+  restaurant.save!
+end
+puts 'Finished!'
